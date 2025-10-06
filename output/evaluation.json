@@ -1,0 +1,32 @@
+{
+  "scores": {
+    "footwork": 5.77823112938251,
+    "head_position": 4.0,
+    "swing_control": 4.0,
+    "balance": 5.780980661099523,
+    "follow_through": 4.0
+  },
+  "overall": 4.71,
+  "grade": "beginner",
+  "comments": {
+    "footwork": "Keep front foot aligned within ~45\u00b0",
+    "head_position": "Bring head closer over the front foot at impact.",
+    "swing_control": "Maintain smooth elbow trajectory through downswing.",
+    "balance": "Keep spine closer to vertical for better balance.",
+    "follow_through": "Finish high with controlled elbow range."
+  },
+  "phases": {
+    "stance": [
+      0,
+      27
+    ],
+    "downswing": [
+      28,
+      36
+    ],
+    "follow_through": [
+      37,
+      271
+    ]
+  }
+}

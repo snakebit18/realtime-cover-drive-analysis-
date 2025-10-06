@@ -1,0 +1,45 @@
+# Configuration for Cover Drive Real-Time Analysis
+video:
+  input: ""           
+  target_fps: 25
+  width:  1080
+  height: 1920
+  fourcc: "mp4v"       # codec for cv2.VideoWriter
+  output_dir: "./output"
+pose:
+  model_complexity: 2  # 0 light /1 medium/ 2 heavy in MediaPipe Pose
+  enable_segmentation: false
+  smooth_landmarks: true
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+metrics:
+  # angle/deg & geometric thresholds tuned for a classic cover drive (right-handed assumed; swap later if needed)
+  elbow_good_min: 80    # good front-elbow elevation (min angle)
+  elbow_good_max: 130    # good front-elbow elevation (max angle)
+  spine_lean_max: 35     # degrees away from vertical (absolute)
+  head_over_toe_max_x_px: 35  # |head_x - front_foot_x| threshold in normalized px (after resizing)
+  foot_dir_max: 45       # degrees of front foot yaw from crease (x-axis)
+smoothing:
+  win: 5                 # moving average window for angles/positions
+  interpolate_missing: true
+  max_gap: 8             # max frames to interpolate through
+phases:
+  enable: true
+  vel_win: 3             # for finite-difference velocities
+  wrist_vel_impact_z: 1.8  # z-score-like factor (heuristic) to mark contact
+scoring:
+  # weights for categories summing to 1.0
+  weights:
+    footwork: 0.2
+    head_position: 0.25
+    swing_control: 0.2
+    balance: 0.2
+    follow_through: 0.15
+  grade_bands:
+    beginner: 0.0-4.9
+    intermediate: 5.0-7.9
+    advanced: 8.0-10.0
+report:
+  charts: true
+  include_overlay_slate: true
+  save_pngs: true
